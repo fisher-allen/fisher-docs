@@ -1,50 +1,37 @@
-# 1、使用 typeof bar === "object" 来确定 bar 是否是对象的潜在陷阱是什么？如何避免这个陷阱？<i class='iconS'></i><i class='iconS'></i><i class='iconS'></i>
+# fisher项目如何启动
 
-### 知识点
+## 项目结构说明
+- fisher-center Eureka服务注册中心,该工程已经删除
+  注册中心已替换成Nacos
+- fisher-common 公共模块
+- fisher-auth  Oauth2 认证服务器 提供token
+- fisher-back 后台管理模块
+- fisher-transcation 基于mq最终一致性实现可靠消息的分布式事务方案
+  - fisher-transaction-message 独立消息服务微服务
+  - fisher-transaction-sample 基于支付宝转账的演示
+  - fisher-transaction-web消息补偿管理后台
+- fisher-monitor Spring boot admin监控以及Skywalking监控
+- fisher-log 日志中心模块
+- fisher-file 文件上传服务,这个服务可以暂时不起，因为前端还没有对接
+- fisher-gen 代码生成模块
+- fisher-starter 自定义封装各种starer 目前封装了日志处理
+- fisher-gateway 后端统一入口，提供动态路由，oauth2的资源服务器
 
-`typeof`是检测给定的变量的数据类型
-`"undefined"`--如果这个值未定义
-`"boolean"`--如果这个值是布尔值
-`"string"`--如果这个值是字符串
-`"number"`--如果这个值是数值
-`"object"`--如果这个值是对象或者null
-`"function"`--如果这个值是函数
-
-`typeof bar === "object"`用来检测是否为对象的方法，就像`typeof bar === "number"`
-
-```js
-let bar = {a:1,b:2};
-console.log(typeof bar === "object");// true
+## 项目运行
 ```
-从知识点我们可以知道，判断object的时候，有可能是null,因特殊值`null`会被认为空的对象引用
-```js
-let bar = null;
-console.log(typeof bar === "object");// true
-```
-因此我们需要首先判断是否为空
-```js
-let bar = null,a = {id:1},c = {},b;
-console.log(bar !== null && typeof bar === "object");// false
-console.log(a !== null && typeof a === "object");// true
-console.log(c !== null && typeof c === "object");// true
-console.log(b !== null && typeof b === "object");// false
-```
-那么如果`bar`变量是个Array呢？
-```js
-let bar = [];
-console.log(bar !== null && typeof bar === "object");// true
+git clone https://github.com/fanxinglong/fisher
+先配置数据库，然后reids，需要启动rabbitmq,启动nacos,启动sentinel
+启动顺序：最好按顺序启动，不按顺序启动，至少要把网关放到最后启动
+注意：Nacos先修改配置连自己本地数据库，并把nacos的配置数据库导入到自己本地数据库
+导入之后，检查nacos各个微服务相关配置的mysql，redis,rabbitmq配置是否正确
+fisher-auth
+fisher-back
+fisher-log
+fisher-gen
+fisher-monitor
+fisher-transcation
+fisher-file 
+fisher-gateway
 
-# 因此需要判断一下是否为数组
-let bar = [];
-console.log(bar !== null && typeof bar === "object" && toString.call(bar)!=="[object Array]");// false
-或
-console.log(bar !== null && typeof bar === "object" && !(bar instanceof Array));// false
-或
-console.log(bar !== null && typeof bar === "object" && !(Array.isArray(bar)));// false
+前端启动参照前端项目
 ```
-> Array.isArray()：ES5新增加的判断是否为数组的方法
-instanceof：运算符用来判断一个构造函数的prototype属性所指向的对象是否存在另外一个要检测对象的原型链上
-
-**参考资料：**
-
-[原题来源](https://www.toptal.com/javascript/interview-questions)
