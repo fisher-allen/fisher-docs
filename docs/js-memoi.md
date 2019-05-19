@@ -1,35 +1,17 @@
-# 记忆化斐波那契函数（Memoization）
+# Fisher相关文档
 
-**题目：斐波那契数列指的是类似于以下的数列：**
+**文档：文档相关说明：**
 
-`1, 1, 2, 3, 5, 8, 13, ....`
+捐赠198元元，即可获取《Fisher项目所有文档1.0.0》
+捐赠298元元，可长期获取最新的《Fisher项目所有文档》
+捐赠时，备注QQ邮箱、或添加QQ：939961241，文档通过邮件、QQ发送。
+可以通过扫描下方的二维码捐赠，开源不易，请大家不要私下散播和交易，感谢您的支持与合作！
 
-也就是，第 n 个数由数列的前两个相加而来：f(n) = f(n - 1) + f(n -2)
+<!-- ![捐赠](./pay.jpeg ':zoom') -->
 
-请你完成 fibonacci 函数，接受 n 作为参数，可以获取数列中第 n 个数，例如：
+<!-- ![捐赠](./pay.jpeg ) -->
 
-```js
-fibonacci(1) // => 1
-fibonacci(2) // => 1
-fibonacci(3) // => 2
-```
-
-测试程序会从按顺序依次获取斐波那契数列中的数，请注意程序不要超时，也不要添加额外的全局变量。
-
-`题目来源：《JavaScript 语言精髓》`
-
-### 题目解析答案：
-
-```js
-const fibonacci = ((memo = [0, 1]) => {
-  const fib = (n) => {
-    let result = memo[n]
-    if (typeof result !== "number") {
-      result = fib(n - 1) + fib(n - 2)
-      memo[n] = result
-    }
-    return result
-  }
-  return fib
-})()
-```
+<p align="center"> 
+  <img src="./pay.jpeg" alt="Sample" width="250" height="300"> 
+  <!-- <p align="left"> </p> -->
+</p>
