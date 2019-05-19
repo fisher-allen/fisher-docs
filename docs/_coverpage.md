@@ -1,12 +1,12 @@
-![logo](./web-logo-120.png ':no-zoom')
+![logo](./fisher.png ':no-zoom')
 
-# Font-end-interview-js
+# Fisher微服务架构平台
 
-> 前端面试interview的JS题目收集，持续更新
+> Fisher相关内容，持续更新
 
 > **勿浅尝辄止**
 
 * 评论中可以给出自己的见解和答案，一起学习进步
 
-[GitHub](https://github.com/nieyafei/front-end-interview-js)
+[GitHub](https://github.com/fxllong/fisher)
 [开始阅读](/welcome.md)
