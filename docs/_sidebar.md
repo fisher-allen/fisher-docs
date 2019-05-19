@@ -3,7 +3,7 @@
   * [<span></span>Fisher文档相关<i class='iconS'></i>](js-memoi.md)
 
 * Fisher项目如何启动？
-  * [<span></span>1、Fisher如何启动运行？ <i class='iconS'></i><i class='iconS'></i><i class='iconS'></i>](basic.md)
+  * [<span></span>Fisher如何启动运行？ <i class='iconS'></i><i class='iconS'></i><i class='iconS'></i>](basic.md)
 
 
 * 私人指导
